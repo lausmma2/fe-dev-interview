@@ -30,7 +30,7 @@ _*Ilustrační vzor_:
 ## Bonusová akceptační kritéria
 1. JWT token získání pomocí přihlašovacího je uložen do localstorage / cookies
 2. Po přihlášení je uživatel přesměrován na modul výplat - salary endpointy jsou vyžadují ověření pomocí JWT tokenu
-3. S načteným JWT tokenem se nám v postranním menu ukáže 
+3. S načteným JWT tokenem se nám v postranním menu ukáže odkaz na modul výplat na routě "/salary"
 4. JWT token je z localstorage/cookie načten i po refreshnutí stránky
 5. Základní responzivní stylování
 6. Podle času implementovat obdobné funcionality modulu uživatelů do modulu výplat
