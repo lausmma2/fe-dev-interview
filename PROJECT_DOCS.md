@@ -29,7 +29,7 @@ npm run preview
 ## Extending tailwindcss config
 [Theme configuration - Tailwind CSS](https://tailwindcss.com/docs/theme#extending-the-default-theme)
 
-[./tailwind.config.ts](./tailwind.config.ts)
+[./tailwind.config.js](./tailwind.config.js)
 ```js
     },
     extend: {
