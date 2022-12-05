@@ -1,0 +1,1132 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Interview Test API",
+    "description": "Interview Test API",
+    "version": "0.0.0"
+  },
+  "servers": [
+    {
+      "url": "\/",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "\/api\/salaries": {
+      "get": {
+        "operationId": "api_salaries_get_collection",
+        "tags": [
+          "Salary"
+        ],
+        "responses": {
+          "200": {
+            "description": "Salary collection",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hydra:member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/components\/schemas\/Salary.jsonld"
+                      }
+                    },
+                    "hydra:totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "hydra:view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "hydra:first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "hydra:last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "hydra:previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "hydra:next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "hydra:first": "string",
+                        "hydra:last": "string",
+                        "hydra:previous": "string",
+                        "hydra:next": "string"
+                      }
+                    },
+                    "hydra:search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "hydra:template": {
+                          "type": "string"
+                        },
+                        "hydra:variableRepresentation": {
+                          "type": "string"
+                        },
+                        "hydra:mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "hydra:member"
+                  ]
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/components\/schemas\/Salary"
+                  }
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/components\/schemas\/Salary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of Salary resources.",
+        "description": "Retrieves the collection of Salary resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "operationId": "api_salaries_post",
+        "tags": [
+          "Salary"
+        ],
+        "responses": {
+          "201": {
+            "description": "Salary resource created",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary.jsonld"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          }
+        },
+        "summary": "Creates a Salary resource.",
+        "description": "Creates a Salary resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new Salary resource",
+          "content": {
+            "application\/ld+json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Salary.jsonld"
+              }
+            },
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Salary"
+              }
+            },
+            "text\/html": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Salary"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      },
+      "parameters": []
+    },
+    "\/api\/salaries\/{id}": {
+      "get": {
+        "operationId": "api_salaries_id_get",
+        "tags": [
+          "Salary"
+        ],
+        "responses": {
+          "200": {
+            "description": "Salary resource",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary.jsonld"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Retrieves a Salary resource.",
+        "description": "Retrieves a Salary resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Salary identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "operationId": "api_salaries_id_put",
+        "tags": [
+          "Salary"
+        ],
+        "responses": {
+          "200": {
+            "description": "Salary resource updated",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary.jsonld"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Replaces the Salary resource.",
+        "description": "Replaces the Salary resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Salary identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated Salary resource",
+          "content": {
+            "application\/ld+json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Salary.jsonld"
+              }
+            },
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Salary"
+              }
+            },
+            "text\/html": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Salary"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "operationId": "api_salaries_id_delete",
+        "tags": [
+          "Salary"
+        ],
+        "responses": {
+          "204": {
+            "description": "Salary resource deleted"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Removes the Salary resource.",
+        "description": "Removes the Salary resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Salary identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "patch": {
+        "operationId": "api_salaries_id_patch",
+        "tags": [
+          "Salary"
+        ],
+        "responses": {
+          "200": {
+            "description": "Salary resource updated",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary.jsonld"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Salary"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Updates the Salary resource.",
+        "description": "Updates the Salary resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Salary identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated Salary resource",
+          "content": {
+            "application\/merge-patch+json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Salary"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      },
+      "parameters": []
+    },
+    "\/api\/users": {
+      "get": {
+        "operationId": "api_users_get_collection",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "User collection",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hydra:member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#\/components\/schemas\/User.jsonld"
+                      }
+                    },
+                    "hydra:totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "hydra:view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "hydra:first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "hydra:last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "hydra:previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "hydra:next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "hydra:first": "string",
+                        "hydra:last": "string",
+                        "hydra:previous": "string",
+                        "hydra:next": "string"
+                      }
+                    },
+                    "hydra:search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "hydra:template": {
+                          "type": "string"
+                        },
+                        "hydra:variableRepresentation": {
+                          "type": "string"
+                        },
+                        "hydra:mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": "string",
+                                "nullable": true
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "hydra:member"
+                  ]
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/components\/schemas\/User"
+                  }
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#\/components\/schemas\/User"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of User resources.",
+        "description": "Retrieves the collection of User resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "operationId": "api_users_post",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "201": {
+            "description": "User resource created",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User.jsonld"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User"
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          }
+        },
+        "summary": "Creates a User resource.",
+        "description": "Creates a User resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new User resource",
+          "content": {
+            "application\/ld+json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/User.jsonld"
+              }
+            },
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/User"
+              }
+            },
+            "text\/html": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      },
+      "parameters": []
+    },
+    "\/api\/users\/{id}": {
+      "get": {
+        "operationId": "api_users_id_get",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "User resource",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User.jsonld"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User"
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Retrieves a User resource.",
+        "description": "Retrieves a User resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "operationId": "api_users_id_put",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "User resource updated",
+            "content": {
+              "application\/ld+json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User.jsonld"
+                }
+              },
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User"
+                }
+              },
+              "text\/html": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/User"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Replaces the User resource.",
+        "description": "Replaces the User resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated User resource",
+          "content": {
+            "application\/ld+json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/User.jsonld"
+              }
+            },
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/User"
+              }
+            },
+            "text\/html": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      },
+      "delete": {
+        "operationId": "api_users_id_delete",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "204": {
+            "description": "User resource deleted"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Removes the User resource.",
+        "description": "Removes the User resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "User identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "parameters": []
+    },
+    "\/auth": {
+      "ref": "JWT Token",
+      "post": {
+        "operationId": "postCredentialsItem",
+        "tags": [
+          "Token"
+        ],
+        "responses": {
+          "200": {
+            "description": "Get JWT token",
+            "content": {
+              "application\/json": {
+                "schema": {
+                  "$ref": "#\/components\/schemas\/Token"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get JWT token to login.",
+        "description": "",
+        "parameters": [],
+        "requestBody": {
+          "description": "Generate new JWT Token",
+          "content": {
+            "application\/json": {
+              "schema": {
+                "$ref": "#\/components\/schemas\/Credentials"
+              }
+            }
+          },
+          "required": false
+        },
+        "deprecated": false,
+        "security": []
+      },
+      "parameters": []
+    }
+  },
+  "components": {
+    "schemas": {
+      "Salary": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "user": {
+            "description": "The user of salary",
+            "type": "string",
+            "format": "iri-reference"
+          },
+          "money": {
+            "minimum": 0,
+            "description": "The money of salary",
+            "type": "integer"
+          }
+        }
+      },
+      "Salary.jsonld": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": [
+                      "http:\/\/www.w3.org\/ns\/hydra\/core#"
+                    ]
+                  }
+                },
+                "required": [
+                  "@vocab",
+                  "hydra"
+                ],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "user": {
+            "description": "The user of salary",
+            "type": "string",
+            "format": "iri-reference"
+          },
+          "money": {
+            "minimum": 0,
+            "description": "The money of salary",
+            "type": "integer"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "email": {
+            "format": "email",
+            "maxLength": 255,
+            "description": "The email of the user",
+            "externalDocs": {
+              "url": "https:\/\/schema.org\/email"
+            },
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 255,
+            "description": "The name of the user",
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "maxLength": 255,
+            "description": "The surname of the user",
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "description": "The is active user",
+            "type": "boolean"
+          },
+          "note": {
+            "maxLength": 255,
+            "description": "The note of the user",
+            "type": "string",
+            "nullable": true
+          },
+          "plainPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "roles": {
+            "readOnly": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userIdentifier": {
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "User.jsonld": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": [
+                      "http:\/\/www.w3.org\/ns\/hydra\/core#"
+                    ]
+                  }
+                },
+                "required": [
+                  "@vocab",
+                  "hydra"
+                ],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "email": {
+            "format": "email",
+            "maxLength": 255,
+            "description": "The email of the user",
+            "externalDocs": {
+              "url": "https:\/\/schema.org\/email"
+            },
+            "type": "string"
+          },
+          "name": {
+            "maxLength": 255,
+            "description": "The name of the user",
+            "type": "string",
+            "nullable": true
+          },
+          "surname": {
+            "maxLength": 255,
+            "description": "The surname of the user",
+            "type": "string",
+            "nullable": true
+          },
+          "active": {
+            "description": "The is active user",
+            "type": "boolean"
+          },
+          "note": {
+            "maxLength": 255,
+            "description": "The note of the user",
+            "type": "string",
+            "nullable": true
+          },
+          "plainPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "roles": {
+            "readOnly": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userIdentifier": {
+            "readOnly": true,
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "Credentials": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "johndoe@example.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "apassword"
+          }
+        }
+      }
+    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {
+      "JWT": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ],
+  "tags": []
+}
