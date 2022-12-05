@@ -28,9 +28,7 @@ _*Ilustrační vzor_:
    - Nastylovaný přihlašovacího formuláře, odesílá _email_ & _password_ s nově vytvořeným uživatelem na ["https://interview-test.digital.cz/auth"](http://localhost:3000/auth) endpoint
 
 ## Bonusová akceptační kritéria
-1. JWT token získání pomocí přihlašovacího je uložen do localstorage / cookies
-2. Po přihlášení je uživatel přesměrován na modul výplat - salary endpointy jsou vyžadují ověření pomocí JWT tokenu
-3. S načteným JWT tokenem se nám v postranním menu ukáže odkaz na modul výplat na routě "/salary"
-4. JWT token je z localstorage/cookie načten i po refreshnutí stránky
-5. Základní responzivní stylování
-6. Podle času implementovat obdobné funcionality modulu uživatelů do modulu výplat
+1. Po přihlášení je uživatel přesměrován na modul výplat - salary endpointy jsou vyžadují ověření pomocí JWT tokenu
+2. S načteným JWT tokenem se nám v postranním menu ukáže odkaz na modul výplat na routě "/salary"
+3. Základní responzivní stylování
+4. Podle času implementovat obdobné funcionality modulu uživatelů do modulu výplat
