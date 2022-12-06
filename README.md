@@ -25,10 +25,10 @@ _*Ilustrační vzor_:
    - formuláře pro přidání / úpravu mají základní FE validace
 4. V postranní navigaci vidím odkaz na výpis [uživatelů](http://localhost:3000/) a odkaz na přihlášení
 5. Stránka přihlašení je dostupná na routě ["/login"](http://localhost:3000/login)
-   - Nastylovaný přihlašovacího formuláře, odesílá _email_ & _password_ s nově vytvořeným uživatelem na ["https://interview-test.digital.cz/auth"](http://localhost:3000/auth) endpoint
+   - Nastylovaný přihlašovací formulář odesílá _email_ & _password_ s nově vytvořeným uživatelem na ["https://interview-test.digital.cz/auth"](http://localhost:3000/auth) endpoint
 
 ## Bonusová akceptační kritéria
-1. Po přihlášení je uživatel přesměrován na modul výplat - salary endpointy jsou vyžadují ověření pomocí JWT tokenu
+1. Po přihlášení je uživatel přesměrován na modul výplat - salary endpointy vyžadují ověření pomocí JWT tokenu
 2. S načteným JWT tokenem se nám v postranním menu ukáže odkaz na modul výplat na routě "/salary"
 3. Základní responzivní stylování
 4. Podle času implementovat obdobné funcionality modulu uživatelů do modulu výplat
