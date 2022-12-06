@@ -13,5 +13,11 @@
 
 <script setup lang="ts">
 import { ArrowRightCircleIcon } from '@heroicons/vue/20/solid';
+import { setPageTitle } from '~/assets/ts/utils';
 
+setPageTitle('Users');
 </script>
+
+<style scoped>
+
+</style>

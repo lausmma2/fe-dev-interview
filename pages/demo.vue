@@ -9,7 +9,13 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script setup>
 import { ArrowLeftCircleIcon } from '@heroicons/vue/20/solid';
+import { setPageTitle } from '~/assets/ts/utils';
 
+setPageTitle('Demo');
 </script>
+
+<style scoped>
+
+</style>
