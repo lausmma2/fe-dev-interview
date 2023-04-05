@@ -23,7 +23,7 @@
 3. Rozložení a UI prvky jsou nastylované přibližně podle vzoru 👇 <br>(sloupce a formulářové prvky odpovídají parametrům dokumentace API)
 4. V postranní navigaci vidím odkaz na výpis [uživatelů](http://localhost:3000/) a odkaz na přihlášení
 5. Stránka přihlašení je dostupná na routě ["/login"](http://localhost:3000/login)
-   - Přihlašovací formulář odesílá _email_ & _password_ s nově vytvořeným uživatelem na ["https://interview-test.digital.cz/auth"](http://localhost:3000/auth) endpoint
+   - Přihlašovací formulář odesílá _email_ & _password_ s nově vytvořeným uživatelem na ["https://interview-test.digital.cz/api/auth-token"](http://localhost:3000/auth) endpoint
 
 (_Ilustrační vzor není vyžádováno plnit "pixel-perfect" - slouží k inspiraci layoutu a UI prvků, doporučujeme se soustředit více na interaktivitu a logiku._)
 
