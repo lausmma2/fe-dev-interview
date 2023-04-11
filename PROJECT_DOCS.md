@@ -38,7 +38,7 @@ npm run preview
 },
 ```
 
-## Generating and using axios client and models based on apiDoc
+## Generating and using axios client with request methods and models based on apiDoc
 Run a command, that generates an axios client and ts models based on the api schema
 ```bash
 npm run api
@@ -52,10 +52,11 @@ OpenAPI.BASE = 'https://interview-test.digital.cz';
 
 Use generated axios api client (and optionally typescript models)
 ```ts
-import { UserService } from '~/apiClient';
-const items = await UserService.apiUsersGetCollection();
+import { UserService, /* SalaryService, TokenService */ } from '~/apiClient';
+const items = await UserService.getApiUsersList();
+
 // import type { User } from '~/apiClient';
-// const items: User[] = await UserService.apiUsersGetCollection();
+// const items: User[] = await UserService.getApiUsersList();
 ```
 
 

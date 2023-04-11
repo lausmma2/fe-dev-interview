@@ -9,7 +9,7 @@
         <ArrowRightCircleIcon class="w-5 h-5 text-green-700 inline-block" />
       </NuxtLink>
       <br>
-      <button type="button" @click.prevent="paramTestValue += 1">
+      <button type="button" class="bg-green-600 rounded-lg my-4 text-white px-4 py-1.5" @click.prevent="paramTestValue += 1">
         Test +1
       </button>
     </div>

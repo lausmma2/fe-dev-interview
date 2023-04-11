@@ -4,15 +4,15 @@
       <aside class="w-64 h-screen overflow-auto bg-gray-700 p-4">
         <nav>
           <NuxtLink
-            to="/demo"
-            class="inline-flex w-full text-white px-4 py-2.5 bg-white text-black rounded-md"
+            to="/demo/NejakyTestSlug"
+            class="inline-flex w-full px-4 py-2.5 bg-white text-black rounded-md"
           >
             Demo odkaz
           </NuxtLink>
         </nav>
       </aside>
       <div class="flex flex-col flex-1 items-center justify-center">
-        <header class="border-b h-16 w-full flex items-center justify-between">
+        <header class="border-b h-16 px-4 w-full flex items-center justify-between">
           <ModuleTitle />
         </header>
         <main class="w-full h-full overflow-auto">
