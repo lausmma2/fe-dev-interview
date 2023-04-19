@@ -1,3 +1,11 @@
+# Table of contents
+- [Initial project setup](#initial-project-setup)
+- [Runing a development Server](#runing-a-development-server)
+- [Running a production build](#running-a-production-build)
+- [Extending tailwindcss config](#extending-tailwindcss-config)
+- [Generating and using axios client with request methods and models based on apiDoc](#generating-and-using-axios-client-with-request-methods-and-models-based-on-apidoc)
+- [Docs](#docs)
+
 ## Initial project setup
 
 Make sure to install the dependencies and run project with node v18

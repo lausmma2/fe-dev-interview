@@ -9,7 +9,7 @@
   - [Nuxt 3](https://nuxt.com/docs/getting-started/introduction) - (Podrobná znalost není v našem případě důležitá, zde nám slouží k rychlému tvoření stránek s implicitním routováním)
   - [Tailwindcss](https://nuxt.com/docs/getting-started/introduction) - Doporučeno ke stylování FE komponent
   - [axios](https://www.npmjs.com/package/axios) - Možné použití axios clienta
-  - [Projektová  dokumentace](./PROJECT_DOCS.md) - Silně doporučeno její pečlivé pročtení
+  - [Projektová  dokumentace](./PROJECT_DOCS.md) - **Silně doporučeno její pečlivé přečtení**
 
 ---
 
