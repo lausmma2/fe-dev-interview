@@ -296,7 +296,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SalaryInput"
+                "$ref": "#/components/schemas/CreateSalaryInput"
               }
             }
           }
@@ -365,7 +365,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SalaryInput"
+                "$ref": "#/components/schemas/UpdateSalaryInput"
               }
             }
           }
@@ -599,7 +599,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserInput"
+                "$ref": "#/components/schemas/CreateUserInput"
               }
             }
           }
@@ -690,7 +690,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserInput"
+                "$ref": "#/components/schemas/UpdateUserInput"
               }
             }
           }
@@ -881,7 +881,7 @@
         },
         "type": "object"
       },
-      "SalaryInput": {
+      "CreateSalaryInput": {
         "required": [
           "user",
           "money",
@@ -900,12 +900,39 @@
           "year": {
             "title": "The money of salary",
             "type": "integer",
-            "minimum": 0
+            "maximum": 9999,
+            "minimum": 1900
           },
           "month": {
             "title": "The money of salary",
             "type": "integer",
+            "maximum": 12,
+            "minimum": 1
+          }
+        },
+        "type": "object"
+      },
+      "UpdateSalaryInput": {
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/Ulid2"
+          },
+          "money": {
+            "title": "The money of salary",
+            "type": "integer",
             "minimum": 0
+          },
+          "year": {
+            "title": "The money of salary",
+            "type": "integer",
+            "maximum": 9999,
+            "minimum": 1900
+          },
+          "month": {
+            "title": "The money of salary",
+            "type": "integer",
+            "maximum": 12,
+            "minimum": 1
           }
         },
         "type": "object"
@@ -949,7 +976,7 @@
         },
         "type": "object"
       },
-      "UserInput": {
+      "CreateUserInput": {
         "required": [
           "email",
           "name",
@@ -965,12 +992,52 @@
           "name": {
             "title": "The name of the user",
             "type": "string",
-            "maxLength": 255
+            "maxLength": 255,
+            "minLength": 1
           },
           "surname": {
             "title": "The surname of the user",
             "type": "string",
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "active": {
+            "title": "Whether user is active",
+            "type": "boolean"
+          },
+          "plainPassword": {
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 10,
+            "nullable": true
+          },
+          "note": {
+            "title": "The note of the user",
+            "type": "string",
+            "maxLength": 255,
+            "nullable": true
+          }
+        },
+        "type": "object"
+      },
+      "UpdateUserInput": {
+        "properties": {
+          "email": {
+            "title": "The email of the user",
+            "type": "string",
             "maxLength": 255
+          },
+          "name": {
+            "title": "The name of the user",
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "surname": {
+            "title": "The surname of the user",
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
           },
           "active": {
             "title": "Whether user is active",
