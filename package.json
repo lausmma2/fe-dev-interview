@@ -6,7 +6,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "api": "npx openapi -i ./apiDoc/interview-test.oas3.json -o ./apiClient/ -c axios"
+    "api": "npx openapi --useOptions -i ./apiDoc/interview-test.oas3.json -o ./apiClient/ -c axios"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
