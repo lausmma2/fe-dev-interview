@@ -11,11 +11,13 @@
           </NuxtLink>
         </nav>
       </aside>
+
       <div class="flex flex-col flex-1 items-center justify-center">
         <header class="border-b h-16 px-4 w-full flex items-center justify-between">
           <ModuleTitle />
         </header>
-        <main class="w-full h-full overflow-auto">
+
+        <main class="size-full overflow-auto">
           <slot />
         </main>
       </div>
@@ -23,12 +25,8 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
-
 <style scoped>
-.router-link-exact-active {
-  @apply opacity-80;
-}
+  .router-link-exact-active {
+    @apply opacity-80;
+  }
 </style>

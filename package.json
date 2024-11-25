@@ -6,7 +6,12 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "api": "npx openapi --useOptions -i ./apiDoc/interview-test.oas3.json -o ./apiClient/ -c axios"
+    "api": "npx openapi --useOptions -i ./apiDoc/interview-test.oas3.json -o ./apiClient/ -c axios",
+    "format:fix": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,vue,json}\"",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "types:check": "npx nuxi typecheck",
+    "code-check": "npm run format:fix && npm run lint:check && npm run types:check"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
@@ -15,7 +20,10 @@
     "nuxt": "^3.14.1592",
     "openapi-typescript-codegen": "^0.29.0",
     "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.13"
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.13",
+    "typescript": "5.6.2",
+    "vue-tsc": "^2.1.10"
   },
   "dependencies": {
     "@heroicons/vue": "^2.2.0",

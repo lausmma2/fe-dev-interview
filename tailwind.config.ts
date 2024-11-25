@@ -1,4 +1,6 @@
-module.exports = {
+import type { Config } from 'tailwindcss';
+
+export default {
   mode: 'jit',
   theme: {
     screens: {
@@ -10,9 +12,7 @@ module.exports = {
       '2xl': '1400px',
       '3xl': '1600px',
     },
-    extend: {
-
-    },
+    extend: {},
   },
   plugins: [],
   content: [
@@ -23,4 +23,4 @@ module.exports = {
     './nuxt.config.{js,ts}',
     './app.vue',
   ],
-};
+} satisfies Config;

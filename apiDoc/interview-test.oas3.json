@@ -14,9 +14,7 @@
   "paths": {
     "/api/auth-token": {
       "post": {
-        "tags": [
-          "Token"
-        ],
+        "tags": ["Token"],
         "summary": "Get JWT token",
         "operationId": "post-api-auth-token",
         "requestBody": {
@@ -56,9 +54,7 @@
     },
     "/api/salaries": {
       "get": {
-        "tags": [
-          "Salary"
-        ],
+        "tags": ["Salary"],
         "summary": "List Salaries",
         "operationId": "get_api.salaries.list",
         "parameters": [
@@ -229,10 +225,7 @@
             "description": "Sort results by the `createdAt` field",
             "schema": {
               "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
+              "enum": ["asc", "desc"]
             }
           },
           {
@@ -287,9 +280,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Salary"
-        ],
+        "tags": ["Salary"],
         "summary": "Create Salary",
         "operationId": "post_api.salaries.create",
         "requestBody": {
@@ -317,9 +308,7 @@
     },
     "/api/salaries/{salary}": {
       "get": {
-        "tags": [
-          "Salary"
-        ],
+        "tags": ["Salary"],
         "summary": "Get Salary",
         "operationId": "get_api.salaries.get",
         "parameters": [
@@ -346,9 +335,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Salary"
-        ],
+        "tags": ["Salary"],
         "summary": "Update Salary",
         "operationId": "post_api.salaries.update",
         "parameters": [
@@ -384,9 +371,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Salary"
-        ],
+        "tags": ["Salary"],
         "summary": "Delete Salary",
         "operationId": "delete_api.salaries.delete",
         "parameters": [
@@ -408,9 +393,7 @@
     },
     "/api/users": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "List Users",
         "operationId": "get_api.users.list",
         "parameters": [
@@ -520,10 +503,7 @@
             "description": "Sort results by the `name` field",
             "schema": {
               "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
+              "enum": ["asc", "desc"]
             }
           },
           {
@@ -532,10 +512,7 @@
             "description": "Sort results by the `createdAt` field",
             "schema": {
               "type": "string",
-              "enum": [
-                "asc",
-                "desc"
-              ]
+              "enum": ["asc", "desc"]
             }
           },
           {
@@ -590,9 +567,7 @@
         }
       },
       "post": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Create User",
         "operationId": "post_api.users.create",
         "requestBody": {
@@ -620,9 +595,7 @@
     },
     "/api/users/{user}": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Get User",
         "operationId": "get_api.users.get",
         "parameters": [
@@ -649,9 +622,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Delete User",
         "operationId": "delete_api.users.delete",
         "parameters": [
@@ -671,9 +642,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "summary": "Update User",
         "operationId": "patch_api.users.update",
         "parameters": [
@@ -768,10 +737,7 @@
         "type": "object"
       },
       "BadRequest": {
-        "required": [
-          "title",
-          "detail"
-        ],
+        "required": ["title", "detail"],
         "properties": {
           "title": {
             "type": "string",
@@ -882,12 +848,7 @@
         "type": "object"
       },
       "CreateSalaryInput": {
-        "required": [
-          "user",
-          "money",
-          "year",
-          "month"
-        ],
+        "required": ["user", "money", "year", "month"],
         "properties": {
           "user": {
             "$ref": "#/components/schemas/Ulid2"
@@ -977,12 +938,7 @@
         "type": "object"
       },
       "CreateUserInput": {
-        "required": [
-          "email",
-          "name",
-          "surname",
-          "plainPassword"
-        ],
+        "required": ["email", "name", "surname", "plainPassword"],
         "properties": {
           "email": {
             "title": "The email of the user",
