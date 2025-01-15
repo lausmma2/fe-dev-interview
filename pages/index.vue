@@ -14,7 +14,7 @@
 <template>
   <div class="h-screen flex justify-center items-center">
     <div class="inline-block bg-white p-10 rounded-lg text-center">
-      Výpis uživatelů zde
+      Výpis uživatelů zde:
       <br />
       <br />
 
