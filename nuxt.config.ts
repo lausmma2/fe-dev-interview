@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   },
 
   generate: {
-    routes: ['/', '/login', '/salary'], // pre-generate static pages
+    routes: ['/', '/users', '/login', '/salary'], // pre-generate static pages
   },
 
   typescript: {

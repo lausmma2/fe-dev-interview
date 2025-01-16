@@ -1,14 +1,15 @@
 <script setup lang="ts">
-  type Row = { [key: string]: string };
+  type Row = { [key: string]: string | boolean };
   type Column = string;
 
   const props = defineProps<{
     rows: Row[];
     columns: Column[];
+    isLoading: boolean;
   }>();
 </script>
 <template>
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg max-h-[80%]">
     <table class="w-full text-sm text-left">
       <!-- Table Header -->
       <thead class="text-md text-primary capitalize bg-gray-300">
@@ -19,7 +20,8 @@
         </tr>
       </thead>
       <!-- Table Body -->
-      <tbody>
+      <div v-if="isLoading" class="loading">Loading...</div>
+      <tbody v-else>
         <tr
           v-for="(row, index) in props.rows"
           :key="index"
