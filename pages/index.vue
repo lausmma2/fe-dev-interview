@@ -2,7 +2,7 @@
   import { ArrowRightCircleIcon } from '@heroicons/vue/20/solid';
   import { setPageTitle } from '~/utils/pageTitle';
 
-  setPageTitle('Users');
+  setPageTitle('Homepage');
 
   const count = ref(0);
 
@@ -14,11 +14,11 @@
 <template>
   <div class="h-screen flex justify-center items-center">
     <div class="inline-block bg-white p-10 rounded-lg text-center">
-      Výpis uživatelů zde
+      Výpis uživatelů zde:
       <br />
       <br />
 
-      <NuxtLink :to="`/demo/${count}`" class="underline" title="Example link">
+      <NuxtLink class="underline" title="Example link">
         Demo odkaz ({{ count }})
         <ArrowRightCircleIcon class="size-5 text-green-700 inline-block" />
       </NuxtLink>
