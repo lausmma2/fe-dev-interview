@@ -57,6 +57,7 @@
       <Table :columns="columns" :rows="usersQuery.items" :is-loading="usersQuery.isLoading" />
     </div>
   </PageWrapper>
+  <!-- TODO - Handle submit??? -->
   <Modal :title="'Add new user'" :is-opened="isModalOpened" :on-close="handleClose">
     <UserForm />
   </Modal>
