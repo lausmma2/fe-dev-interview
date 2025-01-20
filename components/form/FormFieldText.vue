@@ -9,6 +9,10 @@
     },
   );
 
+  const errorState = reactive<{ error: string }>({
+    error: '',
+  });
+
   const placeholder = computed(() => {
     return props.type === 'password' ? '••••••••' : 'Some text...';
   });
@@ -16,8 +20,20 @@
   // eslint-disable-next-line func-call-spacing
   const emit = defineEmits<{ (event: 'update:value', value: string): void }>();
 
+  const validateInput = (value: string) => {
+    const isEmailValid = validateEmail(value);
+    if (value.length <= 0) {
+      errorState.error = 'Please fill up this field!';
+    } else if (props.type === 'email' && !isEmailValid) {
+      errorState.error = 'Please enter a valid e-mail!';
+    } else {
+      errorState.error = '';
+    }
+  };
+
   const updateValue = (event: Event) => {
     const input = event.target as HTMLInputElement;
+    validateInput(input.value);
     emit('update:value', input.value);
   };
 </script>
@@ -27,8 +43,10 @@
   <input
     id="identity"
     :placeholder="placeholder"
-    class="shadow appearance-none borderrounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+    class="shadow appearance-none borderrounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     :type="type"
+    min="0"
     @input="updateValue"
   />
+  <span v-if="errorState.error.length" class="text-red-500">{{ errorState.error }}</span>
 </template>

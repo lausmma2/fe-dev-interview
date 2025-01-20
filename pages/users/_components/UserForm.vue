@@ -48,27 +48,27 @@
 
 <template>
   <form class="rounded w-full max-w-xs" @submit.prevent="submit">
-    <div class="identity-input mb-2">
+    <div class="identity-input mb-3">
       <FormFieldText label="E-mail" type="email" />
     </div>
 
-    <div class="password-input mb-2">
+    <div class="password-input mb-3">
       <FormFieldText label="Password" type="password" />
     </div>
 
-    <div class="identity-input mb-2">
+    <div class="identity-input mb-3">
       <FormFieldText label="Name" />
     </div>
 
-    <div class="identity-input mb-2">
+    <div class="identity-input mb-3">
       <FormFieldText label="Surname" />
     </div>
 
-    <div class="identity-input mb-2">
+    <div class="identity-input mb-3">
       <FormFieldRadio :options="['unactive', 'active']" />
     </div>
 
-    <div class="identity-input mb-2">
+    <div class="identity-input mb-3">
       <FormFieldText label="Note" />
     </div>
   </form>
