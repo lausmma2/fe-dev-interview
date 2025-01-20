@@ -70,7 +70,9 @@
       </aside>
 
       <div class="flex flex-col flex-1 items-center justify-center">
-        <header class="border-b h-16 px-4 w-full flex items-center justify-between font-bold">
+        <header
+          class="border-b h-16 px-8 w-full flex items-center justify-between font-bold bg-white"
+        >
           <ModuleTitle />
           <div
             class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-primary font-bold text-md cursor-pointer"

@@ -30,7 +30,11 @@
 
   onMounted(fetchData);
 
-  const columns = ['email', 'name', 'active'];
+  const columns = [
+    { name: 'email', width: '10rem' },
+    { name: 'name', width: '10rem' },
+    { name: 'active', width: '10rem' },
+  ];
 </script>
 
 <template>
