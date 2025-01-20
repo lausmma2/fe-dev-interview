@@ -1,8 +1,12 @@
 <script setup lang="ts">
+  import LoginForm from './_components/LoginForm.vue';
+  import PageWrapper from '~/components/PageWrapper.vue';
   import { setPageTitle } from '~/utils/pageTitle';
   setPageTitle('Login');
 </script>
 
 <template>
-  <div class="h-screen flex justify-center items-center">Login page</div>
+  <PageWrapper>
+    <LoginForm />
+  </PageWrapper>
 </template>

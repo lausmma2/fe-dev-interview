@@ -1,10 +1,12 @@
 import type { User } from '~/types/user';
 
 export const getUsers = async (): Promise<{ items: User[] }> => {
-  const config = useRuntimeConfig();
-  const response = await fetch(`${config.public.apiBasePath}/api/users`);
+  const response = await fetchClient('/api/users');
+
   if (!response.ok) {
-    throw new Error('Failed to fetch users');
+    const errorText = await response.text();
+    throw new Error(`Failed to fetch users: ${errorText}`);
   }
+
   return await response.json();
 };
