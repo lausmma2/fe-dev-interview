@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
   import { login } from '~/api/login';
-  import type { FormProps } from '~/types/FormProps';
+  import type { FormProps } from '~/types/formProps';
   const formState = reactive<
     {
       values: {
