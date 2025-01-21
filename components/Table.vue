@@ -42,6 +42,7 @@
           <td v-for="column in props.columns.slice(1)" :key="column.name" class="px-6 py-4">
             {{ row[column.name] }}
           </td>
+          <!-- Actions column -->
           <td class="px-6 py-4 text-center">
             <button
               class="text-red-600 hover:text-red-800"
