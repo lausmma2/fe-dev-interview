@@ -24,6 +24,7 @@
     try {
       const response = await login(formState.values.email, formState.values.password);
       storeToken(response.token);
+      await navigateTo('/salaries');
     } catch (err) {
       formState.error = err;
     } finally {
