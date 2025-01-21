@@ -6,6 +6,8 @@
   import Table from '~/components/Table.vue';
   import type { User } from '~/types/user';
   import { setPageTitle } from '~/utils/pageTitle';
+  import type { FormProps } from '~/types/formProps';
+  import { createUser } from '~/api/createUser';
 
   setPageTitle('Users');
 
@@ -42,6 +44,49 @@
   const handleClose = () => {
     isModalOpened.value = false;
   };
+
+  const formData = ref<
+    {
+      values: {
+        email: string;
+        name: string;
+        surname: string;
+        active: boolean;
+        plainPassword: string;
+        note: string;
+      };
+    } & FormProps
+  >({
+    values: {
+      email: '',
+      name: '',
+      surname: '',
+      active: false,
+      plainPassword: '',
+      note: '',
+    },
+    isLoading: false,
+    error: null,
+  });
+
+  const handleSubmit = async () => {
+    formData.value.isLoading = true;
+    formData.value.error = null;
+    try {
+      await createUser(
+        formData.value.values.email,
+        formData.value.values.name,
+        formData.value.values.surname,
+        formData.value.values.active,
+        formData.value.values.plainPassword,
+        formData.value.values.note,
+      );
+    } catch (err) {
+      formData.value.error = err;
+    } finally {
+      formData.value.isLoading = false;
+    }
+  };
 </script>
 
 <template>
@@ -57,8 +102,12 @@
       <Table :columns="columns" :rows="usersQuery.items" :is-loading="usersQuery.isLoading" />
     </div>
   </PageWrapper>
-  <!-- TODO - Handle submit??? -->
-  <Modal :title="'Add new user'" :is-opened="isModalOpened" :on-close="handleClose">
-    <UserForm />
+  <Modal
+    :title="'Add new user'"
+    :is-opened="isModalOpened"
+    :on-close="handleClose"
+    :on-submit="handleSubmit"
+  >
+    <UserForm @form-data="(data) => (formData = data)" />
   </Modal>
 </template>

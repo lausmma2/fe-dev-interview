@@ -3,9 +3,11 @@
     defineProps<{
       label: string;
       type?: string;
+      min?: string;
     }>(),
     {
       type: 'text',
+      min: '0',
     },
   );
 
@@ -26,6 +28,8 @@
       errorState.error = 'Please fill up this field!';
     } else if (props.type === 'email' && !isEmailValid) {
       errorState.error = 'Please enter a valid e-mail!';
+    } else if (value.length > 0 && value.length < Number(props.min)) {
+      errorState.error = `You must use >= ${props.min} characters`;
     } else {
       errorState.error = '';
     }
@@ -45,7 +49,7 @@
     :placeholder="placeholder"
     class="shadow appearance-none borderrounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     :type="type"
-    min="0"
+    :min="min"
     @input="updateValue"
   />
   <span v-if="errorState.error.length" class="text-red-500">{{ errorState.error }}</span>

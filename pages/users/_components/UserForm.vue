@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
-  import { createUser } from '~/api/createUser';
   import type { FormProps } from '~/types/formProps';
   const formState = reactive<
     {
@@ -26,50 +25,41 @@
     error: null,
   });
 
-  const submit = async () => {
-    formState.isLoading = true;
-    formState.error = null;
-    try {
-      await createUser(
-        formState.values.email,
-        formState.values.name,
-        formState.values.surname,
-        formState.values.active,
-        formState.values.plainPassword,
-        formState.values.note,
-      );
-    } catch (err) {
-      formState.error = err;
-    } finally {
-      formState.isLoading = false;
-    }
-  };
+  const emit = defineEmits(['formData']);
+
+  emit('formData', formState);
 </script>
 
 <template>
-  <form class="rounded w-full max-w-xs" @submit.prevent="submit">
+  <form class="rounded w-full max-w-xs">
     <div class="identity-input mb-3">
-      <FormFieldText label="E-mail" type="email" />
+      <FormFieldText v-model:value="formState.values.email" label="E-mail" type="email" />
     </div>
 
     <div class="password-input mb-3">
-      <FormFieldText label="Password" type="password" />
+      <FormFieldText
+        v-model:value="formState.values.plainPassword"
+        label="Password"
+        type="password"
+        min="10"
+      />
     </div>
 
     <div class="identity-input mb-3">
-      <FormFieldText label="Name" />
+      <FormFieldText v-model:value="formState.values.name" label="Name" />
     </div>
 
     <div class="identity-input mb-3">
-      <FormFieldText label="Surname" />
+      <FormFieldText v-model:value="formState.values.surname" label="Surname" />
+    </div>
+
+    <!-- TODO - fix this -->
+    <div class="identity-input mb-3">
+      <FormFieldRadio v-model:value="formState.values.active" :options="['unactive', 'active']" />
     </div>
 
     <div class="identity-input mb-3">
-      <FormFieldRadio :options="['unactive', 'active']" />
-    </div>
-
-    <div class="identity-input mb-3">
-      <FormFieldText label="Note" />
+      <FormFieldText v-model:value="formState.values.note" label="Note" />
     </div>
   </form>
 </template>

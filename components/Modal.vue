@@ -4,6 +4,7 @@
     isOpened: boolean;
     // eslint-disable-next-line func-call-spacing
     onClose: () => void;
+    onSubmit: () => void;
   }>();
 </script>
 
@@ -45,6 +46,7 @@
             data-modal-hide="default-modal"
             type="submit"
             class="text-white bg-primary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            @click="onSubmit"
           >
             Submit
           </button>
