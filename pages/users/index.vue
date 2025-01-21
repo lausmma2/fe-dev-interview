@@ -93,6 +93,8 @@
         formData.value.values.plainPassword,
         formData.value.values.note,
       );
+      await fetchData();
+      handleClose();
     } catch (err) {
       formData.value.error = err;
     } finally {

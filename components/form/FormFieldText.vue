@@ -19,7 +19,7 @@
     return props.type === 'password' ? '••••••••' : 'Some text...';
   });
 
-  const emit = defineEmits(['errorState']);
+  const emit = defineEmits(['update:value', 'errorState']);
 
   const validateInput = (value: string) => {
     const isEmailValid = validateEmail(value);
@@ -37,14 +37,17 @@
   const updateValue = (event: Event) => {
     const input = event.target as HTMLInputElement;
     validateInput(input.value);
+    emit('update:value', input.value);
     emit('errorState', errorState.error);
   };
 </script>
 
 <template>
-  <label for="identity" class="block text-gray-700 text-sm font-bold mb-2">{{ props.label }}</label>
+  <label :for="`field-${props.label}`" class="block text-gray-700 text-sm font-bold mb-2">{{
+    props.label
+  }}</label>
   <input
-    id="identity"
+    :id="`field-${props.label}`"
     :placeholder="placeholder"
     class="shadow appearance-none borderrounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
     :type="type"
