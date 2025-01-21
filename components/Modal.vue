@@ -14,7 +14,7 @@
     tabindex="-1"
     aria-hidden="true"
     :class="{
-      'flex overflow-y-auto overflow-x-hidden fixed items-center justify-center z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full': true,
+      'flex overflow-y-auto overflow-x-hidden fixed items-center justify-center z-50 w-full h-full top-0 left-0': true,
       hidden: !props.isOpened,
     }"
   >
