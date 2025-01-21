@@ -25,7 +25,14 @@
     error: null,
   });
 
-  const emit = defineEmits(['formData']);
+  const errorState = ref('');
+
+  const handleErrorState = (err: string) => {
+    errorState.value = err;
+    emit('errorState', errorState.value);
+  };
+
+  const emit = defineEmits(['formData', 'errorState']);
 
   emit('formData', formState);
 </script>
@@ -33,7 +40,12 @@
 <template>
   <form class="rounded w-full max-w-xs">
     <div class="identity-input mb-3">
-      <FormFieldText v-model:value="formState.values.email" label="E-mail" type="email" />
+      <FormFieldText
+        v-model:value="formState.values.email"
+        label="E-mail"
+        type="email"
+        @error-state="handleErrorState"
+      />
     </div>
 
     <div class="password-input mb-3">

@@ -19,8 +19,7 @@
     return props.type === 'password' ? '••••••••' : 'Some text...';
   });
 
-  // eslint-disable-next-line func-call-spacing
-  const emit = defineEmits<{ (event: 'update:value', value: string): void }>();
+  const emit = defineEmits(['errorState']);
 
   const validateInput = (value: string) => {
     const isEmailValid = validateEmail(value);
@@ -38,7 +37,7 @@
   const updateValue = (event: Event) => {
     const input = event.target as HTMLInputElement;
     validateInput(input.value);
-    emit('update:value', input.value);
+    emit('errorState', errorState.error);
   };
 </script>
 

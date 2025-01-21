@@ -69,9 +69,20 @@
     error: null,
   });
 
+  const errorState = ref('');
+
+  const handleErrorState = (err: string) => {
+    errorState.value = err;
+  };
+
   const handleSubmit = async () => {
     formData.value.isLoading = true;
     formData.value.error = null;
+
+    if (errorState.value.length > 0) {
+      return;
+    }
+
     try {
       await createUser(
         formData.value.values.email,
@@ -108,6 +119,6 @@
     :on-close="handleClose"
     :on-submit="handleSubmit"
   >
-    <UserForm @form-data="(data) => (formData = data)" />
+    <UserForm @form-data="(data) => (formData = data)" @error-state="handleErrorState" />
   </Modal>
 </template>
