@@ -34,8 +34,6 @@
     }
   };
 
-  onMounted(fetchData);
-
   const columns = [
     { name: 'email', width: '10rem' },
     { name: 'name', width: '10rem' },
@@ -103,12 +101,15 @@
   const deleteRecord = async (id: string) => {
     try {
       await deleteUser(id);
+      await fetchData();
     } catch (err) {
       formData.value.error = err;
     } finally {
       formData.value.isLoading = false;
     }
   };
+
+  onMounted(fetchData);
 </script>
 
 <template>
@@ -121,7 +122,11 @@
         <img src="@/assets/icons/add-icon.svg" width="20" height="20" style="filter: invert(1)" />
         <div>Add new record</div>
       </button>
+      <div v-if="usersQuery.error" class="text-red-600">
+        {{ usersQuery.error }}
+      </div>
       <Table
+        v-else
         :columns="columns"
         :rows="usersQuery.items"
         :is-loading="usersQuery.isLoading"

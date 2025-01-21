@@ -7,6 +7,4 @@ export const deleteUser = async (id: string): Promise<void> => {
     const errorText = await response.text();
     throw new Error(`Deleting user failed: ${errorText}`);
   }
-
-  return await response.json();
 };
