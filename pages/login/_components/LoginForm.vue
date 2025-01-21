@@ -17,12 +17,13 @@
     isLoading: false,
     error: null,
   });
+
   const submit = async () => {
     formState.isLoading = true;
     formState.error = null;
     try {
-      // TODO - get JWT from response and store it into cookies or LS
-      await login(formState.values.email, formState.values.password);
+      const response = await login(formState.values.email, formState.values.password);
+      storeToken(response.token);
     } catch (err) {
       formState.error = err;
     } finally {

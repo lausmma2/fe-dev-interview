@@ -27,12 +27,12 @@
 
   const errorState = ref('');
 
+  const emit = defineEmits(['formData', 'errorState']);
+
   const handleErrorState = (err: string) => {
     errorState.value = err;
     emit('errorState', errorState.value);
   };
-
-  const emit = defineEmits(['formData', 'errorState']);
 
   emit('formData', formState);
 </script>
