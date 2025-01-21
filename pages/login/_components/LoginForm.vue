@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
   import { login } from '~/api/login';
-  import type { FormProps } from '~/types/FormProps';
+  import type { FormProps } from '~/types/formProps';
   const formState = reactive<
     {
       values: {
@@ -61,6 +61,7 @@
         <button
           class="bg-primary hover:bg-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
+          :disabled="formState.isLoading"
         >
           Sign In
         </button>

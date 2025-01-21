@@ -6,9 +6,6 @@ export const login = async (
 ): Promise<{ user: User; token: string }> => {
   const response = await fetchClient('/api/auth-token', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({ email, password }),
   });
 
