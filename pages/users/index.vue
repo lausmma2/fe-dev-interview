@@ -8,6 +8,7 @@
   import { setPageTitle } from '~/utils/pageTitle';
   import type { FormProps } from '~/types/formProps';
   import { createUser } from '~/api/createUser';
+  import { deleteUser } from '~/api/deleteUser';
 
   setPageTitle('Users');
 
@@ -98,6 +99,16 @@
       formData.value.isLoading = false;
     }
   };
+
+  const deleteRecord = async (id: string) => {
+    try {
+      await deleteUser(id);
+    } catch (err) {
+      formData.value.error = err;
+    } finally {
+      formData.value.isLoading = false;
+    }
+  };
 </script>
 
 <template>
@@ -110,7 +121,12 @@
         <img src="@/assets/icons/add-icon.svg" width="20" height="20" style="filter: invert(1)" />
         <div>Add new record</div>
       </button>
-      <Table :columns="columns" :rows="usersQuery.items" :is-loading="usersQuery.isLoading" />
+      <Table
+        :columns="columns"
+        :rows="usersQuery.items"
+        :is-loading="usersQuery.isLoading"
+        :delete-record="deleteRecord"
+      />
     </div>
   </PageWrapper>
   <Modal
