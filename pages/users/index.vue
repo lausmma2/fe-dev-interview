@@ -68,6 +68,8 @@
     error: null,
   });
 
+  onMounted(fetchData);
+
   const errorState = ref('');
 
   const handleErrorState = (err: string) => {
@@ -108,8 +110,6 @@
       formData.value.isLoading = false;
     }
   };
-
-  onMounted(fetchData);
 </script>
 
 <template>
