@@ -23,7 +23,15 @@
     },
     { immediate: true },
   );
+
+  const jwtToken = useCookie('jwtToken');
+
+  const removeJwtToken = () => {
+    jwtToken.value = null;
+    navigateTo('/login');
+  };
 </script>
+
 <template>
   <div class="flex-1 flex flex-col min-h-screen overflow-auto bg-gray-100">
     <div class="flex w-full">
@@ -59,6 +67,7 @@
                 <div>Users</div>
               </NuxtLink>
               <NuxtLink
+                v-if="jwtToken?.length"
                 to="/salaries"
                 :class="{
                   'inline-flex w-full px-2 py-2.5 text-white rounded-md text-lg font-medium gap-2 hover:bg-gray-700': true,
@@ -75,6 +84,7 @@
               </NuxtLink>
             </div>
             <NuxtLink
+              v-if="!jwtToken?.length"
               to="/login"
               :class="{
                 'inline-flex w-full px-2 py-2.5 text-white rounded-md text-lg font-medium gap-2 hover:bg-gray-700': true,
@@ -89,6 +99,22 @@
               />
               <div>Login</div>
             </NuxtLink>
+            <button
+              v-else
+              :class="{
+                'inline-flex w-full px-2 py-2.5 text-white rounded-md text-lg font-medium gap-2 hover:bg-gray-700': true,
+                'bg-gray-700': tabs.index === 3,
+              }"
+              @click="removeJwtToken"
+            >
+              <img
+                src="@/assets/icons/logout-icon.svg"
+                width="26"
+                height="26"
+                style="filter: invert(1)"
+              />
+              <div>Logout</div>
+            </button>
           </div>
         </nav>
       </aside>
