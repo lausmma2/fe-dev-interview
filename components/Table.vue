@@ -7,6 +7,7 @@
     columns: Column[];
     isLoading: boolean;
     deleteRecord: (id: string) => void;
+    editRecord: (id: string) => void;
   }>();
 </script>
 
@@ -43,7 +44,13 @@
             {{ row[column.name] }}
           </td>
           <!-- Actions column -->
-          <td class="px-6 py-4 text-center">
+          <td class="flex px-6 py-4 text-center gap-3">
+            <button
+              class="text-red-600 hover:text-red-800"
+              @click="props.editRecord(row.id as string)"
+            >
+              <img src="@/assets/icons/edit-icon.svg" width="22" height="22" />
+            </button>
             <button
               class="text-red-600 hover:text-red-800"
               @click="props.deleteRecord(row.id as string)"
