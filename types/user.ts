@@ -10,6 +10,7 @@ export type User = {
 };
 
 export type FormUser = {
+  id: string;
   email: string;
   name: string;
   surname: string;

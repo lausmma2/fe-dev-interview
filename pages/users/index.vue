@@ -10,6 +10,7 @@
   import { createUser } from '~/api/createUser';
   import { deleteUser } from '~/api/deleteUser';
   import { FormTypeValues, type FormType } from '~/types/formType';
+  import { updateUser } from '~/api/updateUser';
 
   setPageTitle('Users');
 
@@ -55,6 +56,7 @@
     } & FormProps
   >({
     values: {
+      id: '',
       email: '',
       name: '',
       surname: '',
@@ -92,13 +94,17 @@
           formData.value.values.plainPassword,
           formData.value.values.note,
         );
-        await fetchData();
       } else {
-        // TODO
-        // eslint-disable-next-line
-        console.log('Call update!');
+        await updateUser(
+          formData.value.values.id,
+          formData.value.values.email,
+          formData.value.values.name,
+          formData.value.values.surname,
+          formData.value.values.active,
+          formData.value.values.note,
+        );
       }
-
+      await fetchData();
       handleClose();
     } catch (err) {
       formData.value.error = err;
@@ -127,6 +133,7 @@
     const row = usersQuery.items.find(user => user.id === id);
     if (row) {
       formData.value.values = {
+        id,
         email: row.email,
         active: row.active,
         name: row.name,
