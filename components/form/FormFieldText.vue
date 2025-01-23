@@ -42,8 +42,8 @@
   const updateValue = (event: Event) => {
     const input = event.target as HTMLInputElement;
     validateInput(input.value);
-    emit('update:value', input.value); // Update v-model
-    emit('errorState', errorState.error); // Emit error state
+    emit('update:value', input.value);
+    emit('errorState', errorState.error);
   };
 </script>
 
