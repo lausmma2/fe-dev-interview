@@ -130,7 +130,7 @@
         </nav>
       </aside>
 
-      <div class="flex flex-col flex-1 items-center justify-center">
+      <div class="flex flex-col flex-1 items-center justify-center w-screen">
         <header
           class="border-b h-16 px-8 w-full flex items-center justify-between font-bold bg-white"
         >
