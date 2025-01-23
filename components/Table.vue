@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="relative overflow-x-auto shadow-md rounded-lg max-h-[80%]">
+  <div class="relative overflow-x-auto shadow-md rounded-lg max-h-screen max-w-full">
     <table class="w-full text-sm text-left">
       <!-- Table Header -->
       <thead class="text-md text-primary capitalize bg-gray-200">

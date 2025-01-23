@@ -13,14 +13,15 @@
     tabindex="-1"
     aria-hidden="true"
     :class="{
-      'flex overflow-y-auto overflow-x-hidden fixed items-center justify-center z-50 w-full h-full top-0 left-0': true,
+      'flex overflow-y-auto overflow-x-hidden fixed items-center justify-center z-50 w-full h-screen top-0 left-0': true,
       hidden: !props.isOpened,
     }"
   >
     <!-- Background Overlay -->
     <div class="absolute inset-0 bg-black opacity-50" @click="onClose"></div>
+
     <div class="relative p-4 w-full max-w-2xl max-h-full items-center">
-      <div class="relative rounded-lg shadow bg-gray-200">
+      <div class="relative rounded-lg shadow bg-white">
         <!-- Header -->
         <div
           class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-600"
@@ -35,8 +36,7 @@
             <img src="@/assets/icons/close-icon.svg" width="26" height="26" />
           </button>
         </div>
-        <!-- Body -->
-        <div class="p-4 md:p-5 space-y-4">
+        <div class="p-4 md:p-5 space-y-4 max-h-[70vh] overflow-y-auto">
           <slot />
         </div>
         <!-- Footer -->

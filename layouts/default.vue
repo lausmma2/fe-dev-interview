@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
   import { useRoute } from 'vue-router';
+  import { paths } from '~/constants/paths';
 
   const route = useRoute();
 
@@ -26,33 +27,43 @@
 
   const jwtToken = useCookie('jwtToken');
 
+  const isMenuOpened = ref(false);
+
   const removeJwtToken = () => {
     jwtToken.value = null;
     navigateTo('/login');
+  };
+
+  const toggleMenu = () => {
+    isMenuOpened.value = !isMenuOpened.value;
   };
 </script>
 
 <template>
   <div class="flex-1 flex flex-col min-h-screen overflow-auto bg-gray-100">
     <div class="flex w-full">
-      <aside class="w-48 h-screen overflow-auto bg-primary py-4 px-2">
+      <aside v-if="isMenuOpened" class="w-48 h-screen overflow-auto bg-primary py-4 px-2">
         <nav>
-          <NuxtLink to="/" class="flex pb-4 justify-around">
-            <img src="@/assets/images/logo-ds.png" width="100" height="60" />
+          <div class="flex pb-4 justify-around">
+            <NuxtLink :to="paths.users">
+              <img src="@/assets/images/logo-ds.png" width="100" height="60" />
+            </NuxtLink>
             <img
               src="@/assets/icons/hamburger-icon.svg"
               width="22"
               height="22"
               style="filter: invert(1)"
+              class="cursor-pointer"
+              @click="toggleMenu"
             />
-          </NuxtLink>
+          </div>
           <div
             class="flex flex-col h-screen justify-between"
             :style="{ height: 'calc(100vh - 4.7rem)' }"
           >
             <div>
               <NuxtLink
-                to="/users"
+                :to="paths.users"
                 :class="{
                   'inline-flex w-full px-2 py-2.5 text-white rounded-md text-lg font-medium gap-2 hover:bg-gray-700': true,
                   'bg-gray-700 text-white': tabs.index === 1,
@@ -68,7 +79,7 @@
               </NuxtLink>
               <NuxtLink
                 v-if="jwtToken?.length"
-                to="/salaries"
+                :to="paths.salaries"
                 :class="{
                   'inline-flex w-full px-2 py-2.5 text-white rounded-md text-lg font-medium gap-2 hover:bg-gray-700': true,
                   'bg-gray-700': tabs.index === 2,
@@ -85,7 +96,7 @@
             </div>
             <NuxtLink
               v-if="!jwtToken?.length"
-              to="/login"
+              :to="paths.login"
               :class="{
                 'inline-flex w-full px-2 py-2.5 text-white rounded-md text-lg font-medium gap-2 hover:bg-gray-700': true,
                 'bg-gray-700': tabs.index === 3,
@@ -123,7 +134,17 @@
         <header
           class="border-b h-16 px-8 w-full flex items-center justify-between font-bold bg-white"
         >
-          <ModuleTitle />
+          <div class="flex gap-4">
+            <img
+              v-if="!isMenuOpened"
+              src="@/assets/icons/hamburger-icon.svg"
+              width="22"
+              height="22"
+              class="cursor-pointer"
+              @click="toggleMenu"
+            />
+            <ModuleTitle />
+          </div>
           <div
             class="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-primary font-bold text-md cursor-pointer"
           >
