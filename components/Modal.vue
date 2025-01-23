@@ -2,7 +2,6 @@
   const props = defineProps<{
     title: string;
     isOpened: boolean;
-    // eslint-disable-next-line func-call-spacing
     onClose: () => void;
     onSubmit: () => void;
   }>();

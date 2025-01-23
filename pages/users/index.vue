@@ -4,11 +4,13 @@
   import { getUsers } from '~/api/getUsers';
   import PageWrapper from '~/components/PageWrapper.vue';
   import Table from '~/components/Table.vue';
-  import type { User } from '~/types/user';
+  import type { FormUser, User } from '~/types/user';
   import { setPageTitle } from '~/utils/pageTitle';
   import type { FormProps } from '~/types/formProps';
   import { createUser } from '~/api/createUser';
   import { deleteUser } from '~/api/deleteUser';
+  import { FormTypeValues, type FormType } from '~/types/formType';
+  import { updateUser } from '~/api/updateUser';
 
   setPageTitle('Users');
 
@@ -18,6 +20,10 @@
     items: [],
     isLoading: false,
     error: null,
+  });
+
+  const userFormProps = reactive<{ formType: FormType }>({
+    formType: FormTypeValues.CREATE,
   });
 
   const fetchData = async () => {
@@ -46,17 +52,11 @@
 
   const formData = ref<
     {
-      values: {
-        email: string;
-        name: string;
-        surname: string;
-        active: boolean;
-        plainPassword: string;
-        note: string;
-      };
+      values: FormUser;
     } & FormProps
   >({
     values: {
+      id: '',
       email: '',
       name: '',
       surname: '',
@@ -85,14 +85,26 @@
     }
 
     try {
-      await createUser(
-        formData.value.values.email,
-        formData.value.values.name,
-        formData.value.values.surname,
-        formData.value.values.active,
-        formData.value.values.plainPassword,
-        formData.value.values.note,
-      );
+      if (userFormProps.formType === FormTypeValues.CREATE) {
+        await createUser(
+          formData.value.values.email,
+          formData.value.values.name,
+          formData.value.values.surname,
+          formData.value.values.active,
+          formData.value.values.plainPassword,
+          formData.value.values.note,
+        );
+      } else {
+        await updateUser(
+          formData.value.values.id,
+          formData.value.values.email,
+          formData.value.values.name,
+          formData.value.values.surname,
+          formData.value.values.active,
+          formData.value.values.plainPassword,
+          formData.value.values.note,
+        );
+      }
       await fetchData();
       handleClose();
     } catch (err) {
@@ -112,6 +124,28 @@
       formData.value.isLoading = false;
     }
   };
+
+  const openCreateUserForm = () => {
+    isModalOpened.value = !isModalOpened.value;
+    userFormProps.formType = FormTypeValues.CREATE;
+  };
+
+  const editUser = (id: string) => {
+    const row = usersQuery.items.find((user) => user.id === id);
+    if (row) {
+      formData.value.values = {
+        id,
+        email: row.email,
+        active: row.active,
+        name: row.name,
+        note: row.note,
+        surname: row.surname,
+        plainPassword: '', // It is not possible to get plainPassword, because it does not return in GET User object so empty string is used in the field
+      };
+      isModalOpened.value = true;
+      userFormProps.formType = FormTypeValues.EDIT;
+    }
+  };
 </script>
 
 <template>
@@ -119,7 +153,7 @@
     <div class="flex flex-col items-start gap-4">
       <button
         class="flex bg-primary text-white px-2 py-1 rounded-md gap-1 items-center"
-        @click="isModalOpened = !isModalOpened"
+        @click="openCreateUserForm"
       >
         <img src="@/assets/icons/add-icon.svg" width="20" height="20" style="filter: invert(1)" />
         <div>Add new record</div>
@@ -133,6 +167,7 @@
         :rows="usersQuery.items"
         :is-loading="usersQuery.isLoading"
         :delete-record="deleteRecord"
+        :edit-record="editUser"
       />
     </div>
   </PageWrapper>
@@ -142,6 +177,11 @@
     :on-close="handleClose"
     :on-submit="handleSubmit"
   >
-    <UserForm @form-data="(data) => (formData = data)" @error-state="handleErrorState" />
+    <UserForm
+      :form-type="userFormProps.formType"
+      :form-data="formData.values"
+      @form-data="(data) => (formData = data)"
+      @error-state="handleErrorState"
+    />
   </Modal>
 </template>

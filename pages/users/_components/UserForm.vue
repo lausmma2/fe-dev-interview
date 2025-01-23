@@ -1,6 +1,13 @@
 <script setup lang="ts">
   import { reactive } from 'vue';
   import type { FormProps } from '~/types/formProps';
+  import type { FormType } from '~/types/formType';
+  import type { FormUser } from '~/types/user';
+  const props = defineProps<{
+    formData: FormUser;
+    formType: FormType;
+  }>();
+
   const formState = reactive<
     {
       values: {
@@ -11,7 +18,7 @@
         plainPassword: string;
         note: string;
       };
-    } & FormProps
+    } & { type: FormType } & FormProps
   >({
     values: {
       email: '',
@@ -21,9 +28,17 @@
       plainPassword: '',
       note: '',
     },
+    type: props.formType,
     isLoading: false,
     error: null,
   });
+
+  watch(
+    () => props.formData,
+    (defaultData) => {
+      Object.assign(formState.values, defaultData);
+    },
+  );
 
   const errorState = ref('');
 

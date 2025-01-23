@@ -8,3 +8,13 @@ export type User = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type FormUser = {
+  id: string;
+  email: string;
+  name: string;
+  surname: string;
+  active: boolean;
+  plainPassword: string;
+  note: string;
+};
