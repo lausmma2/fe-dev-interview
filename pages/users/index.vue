@@ -101,6 +101,7 @@
           formData.value.values.name,
           formData.value.values.surname,
           formData.value.values.active,
+          formData.value.values.plainPassword,
           formData.value.values.note,
         );
       }
@@ -129,8 +130,8 @@
     userFormProps.formType = FormTypeValues.CREATE;
   };
 
-  const editRecord = (id: string) => {
-    const row = usersQuery.items.find(user => user.id === id);
+  const editUser = (id: string) => {
+    const row = usersQuery.items.find((user) => user.id === id);
     if (row) {
       formData.value.values = {
         id,
@@ -139,7 +140,7 @@
         name: row.name,
         note: row.note,
         surname: row.surname,
-        plainPassword: '', // It is not possible to get plainPassword, because it does not return in GET User object
+        plainPassword: '', // It is not possible to get plainPassword, because it does not return in GET User object so empty string is used in the field
       };
       isModalOpened.value = true;
       userFormProps.formType = FormTypeValues.EDIT;
@@ -166,7 +167,7 @@
         :rows="usersQuery.items"
         :is-loading="usersQuery.isLoading"
         :delete-record="deleteRecord"
-        :edit-record="editRecord"
+        :edit-record="editUser"
       />
     </div>
   </PageWrapper>
