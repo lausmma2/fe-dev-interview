@@ -3,6 +3,12 @@
   import PageWrapper from '~/components/PageWrapper.vue';
   import { setPageTitle } from '~/utils/pageTitle';
   setPageTitle('Login');
+
+  const jwtToken = useCookie('jwtToken');
+
+  if (jwtToken && jwtToken.value && jwtToken.value.length > 0) {
+    navigateTo('/salaries');
+  }
 </script>
 
 <template>

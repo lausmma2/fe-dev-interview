@@ -131,7 +131,7 @@
   };
 
   const editUser = (id: string) => {
-    const row = usersQuery.items.find((user) => user.id === id);
+    const row = usersQuery.items.find(user => user.id === id);
     if (row) {
       formData.value.values = {
         id,
