@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  type Row = { [key: string]: string | boolean };
-  type Column = { name: string; width: string };
+  type Row = { [key: string]: string | boolean | Date };
+  type Column = { name: string; type: string; width: string };
 
   const props = defineProps<{
     rows: Row[];
@@ -9,6 +9,13 @@
     deleteRecord: (id: string) => void;
     editRecord: (id: string) => void;
   }>();
+
+  const formatValue = (value: any, type: string): string => {
+    if (type === 'dateTime') {
+      return new Date(value).toLocaleString();
+    }
+    return value?.toString() ?? '';
+  };
 </script>
 
 <template>
@@ -38,10 +45,10 @@
           class="bg-white border-b hover:bg-blue-50"
         >
           <th scope="row" class="px-6 py-4 font-semibold text-primary text-md whitespace-nowrap">
-            {{ row[props.columns[0].name] }}
+            {{ formatValue(row[props.columns[0].name], props.columns[0].type) }}
           </th>
           <td v-for="column in props.columns.slice(1)" :key="column.name" class="px-6 py-4">
-            {{ row[column.name] }}
+            {{ formatValue(row[column.name], column.type) }}
           </td>
           <!-- Actions column -->
           <td class="flex px-6 py-4 text-center gap-3">

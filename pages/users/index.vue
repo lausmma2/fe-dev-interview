@@ -43,7 +43,11 @@
   const columns = [
     { name: 'email', width: '10rem' },
     { name: 'name', width: '10rem' },
+    { name: 'surname', width: '10rem' },
     { name: 'active', width: '10rem' },
+    { name: 'note', width: '15rem' },
+    { name: 'createdAt', type: 'dateTime', width: '12rem' },
+    { name: 'updatedAt', type: 'dateTime', width: '12rem' },
   ];
 
   const handleClose = () => {
