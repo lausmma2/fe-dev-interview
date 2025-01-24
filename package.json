@@ -27,6 +27,7 @@
     "vue-tsc": "^2.1.10"
   },
   "dependencies": {
+    "@formkit/nuxt": "^1.6.9",
     "@heroicons/vue": "^2.2.0",
     "@primevue/themes": "^4.2.5",
     "axios": "^1.7.7",

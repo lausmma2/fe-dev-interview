@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
-  modules: ['@primevue/nuxt-module'],
+  modules: ['@primevue/nuxt-module', '@formkit/nuxt'],
   primevue: {},
+  formkit: {},
 
   postcss: {
     plugins: {
