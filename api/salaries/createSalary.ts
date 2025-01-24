@@ -1,3 +1,4 @@
+import { fetchClientProtected } from '../utils/fetchClientProtected';
 import type { Salary } from '~/types/salary';
 
 export const createSalary = async (
@@ -6,7 +7,7 @@ export const createSalary = async (
   year: string,
   month: number,
 ): Promise<{ salary: Salary }> => {
-  const response = await fetchClient('/api/salaries', {
+  const response = await fetchClientProtected('/api/salaries', {
     method: 'POST',
     body: JSON.stringify({ user, money, year, month }),
   });

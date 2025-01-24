@@ -1,5 +1,7 @@
+import { fetchClientProtected } from '../utils/fetchClientProtected';
+
 export const deleteSalary = async (id: string): Promise<void> => {
-  const response = await fetchClient(`/api/salary/${id}`, {
+  const response = await fetchClientProtected(`/api/salary/${id}`, {
     method: 'DELETE',
   });
 

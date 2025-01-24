@@ -1,3 +1,4 @@
+import { fetchClientProtected } from '../utils/fetchClientProtected';
 import type { Salary } from '~/types/salary';
 
 export const updateSalary = async (
@@ -7,7 +8,7 @@ export const updateSalary = async (
   year: string,
   month: number,
 ): Promise<{ user: Salary }> => {
-  const response = await fetchClient(`/api/salaries/${id}`, {
+  const response = await fetchClientProtected(`/api/salaries/${id}`, {
     method: 'PATCH',
     body: JSON.stringify({ user, money, year, month }),
   });
