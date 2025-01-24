@@ -1,8 +1,4 @@
 <script setup lang="ts">
-  import { setPageTitle } from '~/utils/pageTitle';
-  setPageTitle('Homepage');
+  import { paths } from '~/constants/paths';
+  navigateTo(paths.users);
 </script>
-
-<template>
-  <div class="h-screen flex justify-center items-center"></div>
-</template>

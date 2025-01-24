@@ -43,12 +43,12 @@
   const columns = [
     { name: 'email', width: '10rem' },
     { name: 'name', width: '10rem' },
+    { name: 'surname', width: '10rem' },
     { name: 'active', width: '10rem' },
+    { name: 'note', width: '15rem' },
+    { name: 'createdAt', type: 'dateTime', width: '12rem' },
+    { name: 'updatedAt', type: 'dateTime', width: '12rem' },
   ];
-
-  const handleClose = () => {
-    isModalOpened.value = false;
-  };
 
   const formData = ref<
     {
@@ -69,6 +69,21 @@
   });
 
   onMounted(fetchData);
+
+  const handleClose = () => {
+    isModalOpened.value = false;
+
+    // Reset the form values
+    formData.value.values = {
+      id: '',
+      email: '',
+      name: '',
+      surname: '',
+      active: false,
+      plainPassword: '',
+      note: '',
+    };
+  };
 
   const errorState = ref('');
 
@@ -150,7 +165,7 @@
 
 <template>
   <PageWrapper>
-    <div class="flex flex-col items-start gap-4">
+    <div class="flex flex-col items-start gap-4 overflow-x-auto">
       <button
         class="flex bg-primary text-white px-2 py-1 rounded-md gap-1 items-center"
         @click="openCreateUserForm"
