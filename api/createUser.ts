@@ -15,7 +15,7 @@ export const createUser = async (
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`Create user failed: ${errorText}`);
+    throw new Error(`Creating user failed: ${errorText}`);
   }
 
   return await response.json();

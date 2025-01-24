@@ -5,10 +5,13 @@
 
   const route = useRoute();
 
+  const isMenuOpened = ref(false);
+
   const tabs = reactive<{ index: number | null }>({
     index: null,
   });
 
+  // When path changes -> find menu tab and highlight it
   watch(
     () => route.fullPath,
     (newFullPath) => {
@@ -25,17 +28,15 @@
     { immediate: true },
   );
 
-  const jwtToken = useCookie('jwtToken');
+  const toggleMenu = () => {
+    isMenuOpened.value = !isMenuOpened.value;
+  };
 
-  const isMenuOpened = ref(false);
+  const jwtToken = useCookie('jwtToken');
 
   const removeJwtToken = () => {
     jwtToken.value = null;
     navigateTo('/login');
-  };
-
-  const toggleMenu = () => {
-    isMenuOpened.value = !isMenuOpened.value;
   };
 </script>
 
