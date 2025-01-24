@@ -172,7 +172,7 @@
         @click="openCreateUserForm"
       >
         <img src="@/assets/icons/add-icon.svg" width="20" height="20" style="filter: invert(1)" />
-        <div>Add new record</div>
+        <div>Add new user</div>
       </button>
       <div v-if="usersQuery.error" class="text-red-600">
         {{ usersQuery.error }}

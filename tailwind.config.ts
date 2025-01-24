@@ -26,5 +26,6 @@ export default {
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
     './app.vue',
+    './formkit.theme.ts',
   ],
 } satisfies Config;
