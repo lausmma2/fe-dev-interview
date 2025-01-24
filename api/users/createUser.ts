@@ -7,7 +7,7 @@ export const createUser = async (
   active: boolean,
   plainPassword: string,
   note: string,
-): Promise<{ user: User; token: string }> => {
+): Promise<{ user: User }> => {
   const response = await fetchClient('/api/users', {
     method: 'POST',
     body: JSON.stringify({ email, name, surname, active, plainPassword, note }),
