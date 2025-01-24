@@ -68,6 +68,7 @@
     error: null,
   });
 
+  // Call the users data when mounted
   onMounted(fetchData);
 
   const handleClose = () => {
@@ -155,7 +156,7 @@
         name: row.name,
         note: row.note,
         surname: row.surname,
-        plainPassword: '', // It is not possible to get plainPassword, because it does not return in GET User object so empty string is used in the field
+        plainPassword: '', // It is not possible to get plainPassword, because it does not return in GET User object so empty string is used instead
       };
       isModalOpened.value = true;
       userFormProps.formType = FormTypeValues.EDIT;
