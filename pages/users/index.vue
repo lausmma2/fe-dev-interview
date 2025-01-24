@@ -50,10 +50,6 @@
     { name: 'updatedAt', type: 'dateTime', width: '12rem' },
   ];
 
-  const handleClose = () => {
-    isModalOpened.value = false;
-  };
-
   const formData = ref<
     {
       values: FormUser;
@@ -73,6 +69,21 @@
   });
 
   onMounted(fetchData);
+
+  const handleClose = () => {
+    isModalOpened.value = false;
+
+    // Reset the form values
+    formData.value.values = {
+      id: '',
+      email: '',
+      name: '',
+      surname: '',
+      active: false,
+      plainPassword: '',
+      note: '',
+    };
+  };
 
   const errorState = ref('');
 

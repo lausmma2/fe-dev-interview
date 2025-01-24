@@ -40,6 +40,17 @@
     },
   );
 
+  const radioOptions = [
+    {
+      label: 'unactive',
+      value: false,
+    },
+    {
+      label: 'active',
+      value: true,
+    },
+  ];
+
   const errorState = ref('');
 
   const emit = defineEmits(['formData', 'errorState']);
@@ -82,7 +93,7 @@
 
     <!-- TODO - fix this -->
     <div class="identity-input mb-3">
-      <FormFieldRadio v-model:value="formState.values.active" :options="['unactive', 'active']" />
+      <FormFieldRadio v-model:value="formState.values.active" :options="radioOptions" />
     </div>
 
     <div class="identity-input mb-3">
