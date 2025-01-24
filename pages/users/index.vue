@@ -154,7 +154,7 @@
 
 <template>
   <PageWrapper>
-    <div class="flex flex-col items-start gap-4">
+    <div class="flex flex-col items-start gap-4 overflow-x-auto">
       <button
         class="flex bg-primary text-white px-2 py-1 rounded-md gap-1 items-center"
         @click="openCreateUserForm"

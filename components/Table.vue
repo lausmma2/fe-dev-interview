@@ -1,6 +1,6 @@
 <script setup lang="ts">
   type Row = { [key: string]: string | boolean | Date };
-  type Column = { name: string; type: string; width: string };
+  type Column = { name: string; type?: string; width: string };
 
   const props = defineProps<{
     rows: Row[];
@@ -19,8 +19,8 @@
 </script>
 
 <template>
-  <div class="relative overflow-x-auto shadow-md rounded-lg max-h-screen max-w-full">
-    <table class="w-full text-sm text-left">
+  <div class="relative overflow-x-auto shadow-md rounded-lg max-h-screen w-full">
+    <table class="min-w-full text-sm text-left">
       <!-- Table Header -->
       <thead class="text-md text-primary capitalize bg-gray-200">
         <tr>
@@ -29,7 +29,7 @@
             :key="column.name"
             scope="col"
             class="px-6 py-3"
-            :style="{ width: column.width }"
+            :style="{ minWidth: column.width }"
           >
             {{ column.name }}
           </th>
@@ -45,10 +45,10 @@
           class="bg-white border-b hover:bg-blue-50"
         >
           <th scope="row" class="px-6 py-4 font-semibold text-primary text-md whitespace-nowrap">
-            {{ formatValue(row[props.columns[0].name], props.columns[0].type) }}
+            {{ formatValue(row[props.columns[0].name], props.columns[0].type ?? '') }}
           </th>
           <td v-for="column in props.columns.slice(1)" :key="column.name" class="px-6 py-4">
-            {{ formatValue(row[column.name], column.type) }}
+            {{ formatValue(row[column.name], column.type ?? '') }}
           </td>
           <!-- Actions column -->
           <td class="flex px-6 py-4 text-center gap-3">

@@ -40,9 +40,9 @@
 </script>
 
 <template>
-  <div class="flex-1 flex flex-col min-h-screen overflow-auto bg-gray-100">
+  <div class="flex-1 flex flex-col min-h-screen max-h-screen overflow-auto bg-gray-100">
     <div class="flex w-full">
-      <aside v-if="isMenuOpened" class="w-48 h-screen overflow-auto bg-primary py-4 px-2">
+      <aside v-if="isMenuOpened" class="min-w-48 h-screen overflow-auto bg-primary py-4 px-2">
         <nav>
           <div class="flex pb-4 justify-around">
             <NuxtLink :to="paths.users">
@@ -130,7 +130,7 @@
         </nav>
       </aside>
 
-      <div class="flex flex-col flex-1 items-center justify-center w-screen">
+      <div class="flex flex-col flex-1 items-center justify-center">
         <header
           class="border-b h-16 px-8 w-full flex items-center justify-between font-bold bg-white"
         >
@@ -152,7 +152,7 @@
           </div>
         </header>
 
-        <main class="size-full overflow-auto">
+        <main class="lg:w-full w-screen overflow-auto">
           <slot />
         </main>
       </div>
