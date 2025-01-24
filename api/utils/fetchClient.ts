@@ -6,6 +6,7 @@ type FetchClientProps = {
 
 export const fetchClient = (url: string, options?: FetchClientProps) => {
   const config = useRuntimeConfig();
+
   return fetch(config.public.apiBasePath + url, {
     ...options,
     headers: {

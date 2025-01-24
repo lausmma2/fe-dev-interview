@@ -1,22 +1,22 @@
+import { fetchClient } from '../utils/fetchClient';
 import type { User } from '~/types/user';
 
-export const updateUser = async (
-  id: string,
+export const createUser = async (
   email: string,
   name: string,
   surname: string,
   active: boolean,
   plainPassword: string,
   note: string,
-): Promise<{ user: User; token: string }> => {
-  const response = await fetchClient(`/api/users/${id}`, {
-    method: 'PATCH',
+): Promise<{ user: User }> => {
+  const response = await fetchClient('/api/users', {
+    method: 'POST',
     body: JSON.stringify({ email, name, surname, active, plainPassword, note }),
   });
 
   if (!response.ok) {
     const errorText = await response.text();
-    throw new Error(`Update user failed: ${errorText}`);
+    throw new Error(`Creating user failed: ${errorText}`);
   }
 
   return await response.json();

@@ -1,3 +1,4 @@
+import { fetchClient } from '../utils/fetchClient';
 import type { User } from '~/types/user';
 
 export const getUsers = async (): Promise<{ items: User[] }> => {

@@ -1,16 +1,16 @@
 <script setup lang="ts">
   import { reactive, onMounted, ref } from 'vue';
   import UserForm from './_components/UserForm.vue';
-  import { getUsers } from '~/api/getUsers';
+  import { getUsers } from '~/api/users/getUsers';
   import PageWrapper from '~/components/PageWrapper.vue';
   import Table from '~/components/Table.vue';
   import type { FormUser, User } from '~/types/user';
   import { setPageTitle } from '~/utils/pageTitle';
   import type { FormProps } from '~/types/formProps';
-  import { createUser } from '~/api/createUser';
-  import { deleteUser } from '~/api/deleteUser';
+  import { createUser } from '~/api/users/createUser';
+  import { deleteUser } from '~/api/users/deleteUser';
   import { FormTypeValues, type FormType } from '~/types/formType';
-  import { updateUser } from '~/api/updateUser';
+  import { updateUser } from '~/api/users/updateUser';
 
   setPageTitle('Users');
 
